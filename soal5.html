@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled List</title>
+    <style>
+        ul {
+            list-style-image: url('sqpurple.gif');
+            width: 100; height: 100;
+        }
+        ul ul {
+            list-style-image: url('sqorange.gif');
+        }
+        strong {
+            color: orange;
+        }
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea
+            <ul>
+                <li><strong>Cold</strong> Tea
+                    <ul>
+                        <a href="#">Jasmine</a> <br>
+                        <a href="#">Green</a>
+                    </ul>
+                </li>
+                <li><strong>Hot</strong> Tea</li>
+            </ul>
+        </li>
+        <li>Coca Cola</li>
+    </ul>
+</body>
+</html>
