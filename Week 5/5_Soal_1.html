@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001-Ebenhazer</title>
+    <style>
+        .border-top-left, .border-top-right, .border-bottom-left, .border-bottom-right {
+            width: 20px;
+            height: 20px;
+        }
+        .border-top-left, .border-bottom-left {
+            border-left: 5px solid #FF0000;
+        }
+        .border-top-right, .border-bottom-right {
+            border-right: 5px solid #FF0000;
+        }
+        .border-top-left, .border-top-right {
+            border-top: 5px solid #FF0000;
+        }
+        .border-bottom-left, .border-bottom-right {
+            border-bottom: 5px solid #FF0000;
+        }
+        table:hover .border-top-left, 
+        table:hover .border-top-right, 
+        table:hover .border-bottom-left, 
+        table:hover .border-bottom-right {
+            border-color: #FF00FF;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="border-top-left"></td>
+            <td colspan="3"></td>
+            <td class="border-top-right"></td>
+        </tr>
+        <tr>
+            <td colspan="5" class="image-container">
+                <img src="star.jpg" width="250px">
+            </td>
+        </tr>
+        <tr>
+            <td class="border-bottom-left"></td>
+            <td colspan="3"></td>
+            <td class="border-bottom-right"></td>
+        </tr>
+    </table>
+</body>
+</html>

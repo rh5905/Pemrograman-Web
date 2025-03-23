@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001-Ebenhazer</title>
+    <style>
+        ul{
+            list-style-type: none;
+            padding: 2px;
+            margin: 3px;
+        }
+        li {
+            float: left;
+            border: 2px dotted grey;
+            margin-right: 3px;
+            position: relative;
+        }
+        a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 15px;
+            color: black;
+        }
+        a:hover {
+            background: black;
+            color: white;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+            <a href="#">News</a>
+            <ul class="dropdown-content">
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Music</a></li>
+                <li><a href="#">Movie</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+    </ul>
+</body>
+</html>  
+
+
+
