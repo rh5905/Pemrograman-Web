@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        td {
+            border: 2px solid black;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabel-container"></div>
+    <script>
+        let num;
+        while (true) {
+            let input = prompt("A Number?");
+            num = parseInt(input);
+
+            if (!isNaN(num)) {
+                break; 
+            }
+            alert("Harap masukkan angka yang benar!");
+        }
+
+        let tableHTML = "<table>";
+        for (let i = 1; i <= 8; i++) {
+            let hasil = i * num;
+            tableHTML += `
+                <tr>
+                    <td>${i}</td>
+                    <td>x</td>
+                    <td>${num}</td>
+                    <td>=</td>
+                    <td>${hasil}</td>
+                </tr>`;
+        }
+        tableHTML += "</table>";
+
+        document.getElementById("tabel-container").innerHTML = tableHTML;
+    </script>
+</body>
+</html>

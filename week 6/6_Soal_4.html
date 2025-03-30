@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+        }
+        label {
+            font-weight: bold;
+            color: blue;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        button {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #proses {
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+        #reset {
+            background-color: gray;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="input">Input :</label>
+        <input type="text" id="input" placeholder="Masukkan angka">
+        
+        <label for="output">Output :</label>
+        <input type="text" id="output" readonly>
+
+        <select id="konversi">
+            <option value="decimal-biner">Decimal &rarr; Biner</option>
+            <option value="biner-decimal">Biner &rarr; Decimal</option>
+        </select>
+
+        <button id="proses" onclick="konversiBilangan()">PROSES</button>
+        <button id="reset" onclick="resetForm()">RESET</button>
+    </div>
+
+    <script>
+        function konversiBilangan() {
+            let input = document.getElementById("input").value;
+            let mode = document.getElementById("konversi").value;
+            let outputField = document.getElementById("output");
+
+            if (mode === "decimal-biner") {
+                let angka = parseInt(input);
+
+                if (isNaN(angka) || angka < 0 || angka > 255) {
+                    alert("Masukkan angka antara 0 hingga 255.");
+                    return;
+                }
+ 
+                let biner = "";
+                for (let i = 7; i >= 0; i--) {
+                    let bit = (angka >> i) & 1;
+                    biner += bit;
+                }
+
+                outputField.value = biner;
+            } else if (mode === "biner-decimal") {
+                if (!/^[01]{8}$/.test(input)) {
+                    alert("Masukkan angka biner 8 digit (hanya 0 dan 1).");
+                    return;
+                }
+
+                let decimal = 0;
+                for (let i = 0; i < 8; i++) {
+                    if (input[i] === '1') {
+                        decimal += Math.pow(2, 7 - i);
+                    }
+                }
+                outputField.value = decimal;
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("input").value = "";
+            document.getElementById("output").value = "";
+        }
+    </script>
+</body>
+</html>

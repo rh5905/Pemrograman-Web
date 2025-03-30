@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 800px;
+            height: 600px;
+        }
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid white;
+        }
+        .filled {
+            background-color: orange;
+        }
+        button{
+            margin-right: 220px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="tinggi">Tinggi Piramida:</label>
+        <input type="number" id="tinggi" min="1"><br><br>
+        <button onclick="generatePiramida()">Proses</button>
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        function generatePiramida() {
+            let tinggi = parseInt(document.getElementById("tinggi").value);
+            let hasil = document.getElementById("hasil");
+            hasil.innerHTML = "";
+
+            if (isNaN(tinggi) || tinggi < 1) {
+                alert("Masukkan angka yang valid!");
+                return;
+            }
+
+            let table = document.createElement("table");
+            for (let i = 0; i < tinggi; i++) {
+                let row = document.createElement("tr");
+                for (let j = 0; j < (tinggi - i - 1); j++) {
+                    let emptyCell = document.createElement("td");
+                    row.appendChild(emptyCell);
+                }
+                for (let k = 0; k < (2 * i + 1); k++) {
+                    let cell = document.createElement("td");
+                    cell.classList.add("filled");
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+            hasil.appendChild(table);
+        }
+    </script>
+</body>
+</html>
