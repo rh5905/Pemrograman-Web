@@ -56,12 +56,12 @@
 <body>
     <script>
     document.querySelector("form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Mencegah reload halaman
+        event.preventDefault(); 
 
         let nama = document.getElementById("nama").value;
         let durasi = document.getElementById("jam").value;
 
-        if (nama && durasi) { // Pastikan nilai ada sebelum menyimpan
+        if (nama && durasi) { 
             let reservasi = {
                 nama: nama,
                 durasi: durasi
@@ -70,7 +70,7 @@
             localStorage.setItem("reservasi", JSON.stringify(reservasi));
 
             alert("Reservasi berhasil ditambahkan ke keranjang!");
-            window.location.href = "keranjang.html"; // Redirect ke keranjang
+            window.location.href = "keranjang.html"; 
         } else {
             alert("Harap isi semua data!");
         }
