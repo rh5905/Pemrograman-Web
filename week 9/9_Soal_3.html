@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001-Ebenhazer Richard</title>
+    <style>
+        table{
+            border: 2px solid black;
+            border-collapse: collapse;
+            font-size: 18px;
+            width: 300px;
+            height: 12    0px;
+        }
+        td{
+            padding: 5px;
+        }
+        input[type="text"], select{
+            font-size: 16px;
+        }
+        button{
+            font-size: 14px;
+        }
+      </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Data</td>
+            <td><input type="text" id="inputData" oninput="this.value = this.value.replace(/[^0-9]/g, '')"></td>
+        </tr>
+        <tr>
+            <td><button onclick="tambahData()">Add</button></td>
+            <td>
+                <select id="aksi" onchange="prosesOperasi(this.value)">
+                    <option value="">Pilih Operasi</option>
+                    <option value="display">Display</option>
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="average">Average</option>
+                    <option value="max">Max</option>
+                    <option value="min">Min</option>
+                    <option value="ganjil">Ganjil</option>
+                    <option value="genap">Genap</option>
+                    <option value="hapus">Hapus</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Hasil</td>
+            <td><input type="text" id="outputHasil" readonly></td>
+        </tr>
+    </table>
+    <script>
+        let daftarAngka = [];
+        function tambahData() {
+            const input = document.getElementById("inputData");
+            const nilai = parseInt(input.value);
+            if (!isNaN(nilai)) {
+                daftarAngka.push(nilai);
+                input.value = "";
+                document.getElementById("outputHasil").value = "";
+            } else {
+                alert("Masukkan angka yang valid.");
+            }
+        }
+        function prosesOperasi(aksi) {
+            let hasil = "";
+            switch (aksi) {
+                case "display":
+                    hasil = daftarAngka.join(", ");
+                    break;
+                case "count":
+                    hasil = daftarAngka.length;
+                    break;
+                case "sum":
+                    hasil = daftarAngka.reduce((a, b) => a + b, 0);
+                    break;
+                case "average":
+                    hasil = daftarAngka.length > 0 
+                    ? (daftarAngka.reduce((a, b) => a + b, 0) / daftarAngka.length).toFixed(2) 
+                    : "";
+                    break;
+                case "max":
+                    hasil = daftarAngka.length > 0 ? Math.max(...daftarAngka) : "";
+                    break;
+                case "min":
+                    hasil = daftarAngka.length > 0 ? Math.min(...daftarAngka) : "";
+                    break;
+                case "ganjil":
+                    hasil = daftarAngka.filter(n => n % 2 !== 0).join(", ");
+                    break;
+                case "genap":
+                    hasil = daftarAngka.filter(n => n % 2 === 0).join(", ");
+                    break;
+                case "hapus":
+                    daftarAngka = [];
+                    hasil = "";
+                    break;
+                default:
+                    hasil = "";
+            }
+            document.getElementById("outputHasil").value = hasil;
+        }
+    </script>
+</body>
+</html>
