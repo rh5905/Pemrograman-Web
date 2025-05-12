@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer Richard</title> 
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            background: #ccc;
+            display: inline-block;
+            margin: 5px;
+        }
+        .red { background: red; }
+        .yellow { background: yellow; }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <button id="changeBtn">Change colors</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(".box").click(function(){
+            $(this).addClass("red");
+        });
+        $("#changeBtn").click(function(){
+            let foundRed = false;
+            $(".box").each(function(){
+                if(!foundRed){
+                    if($(this).hasClass("red")){
+                        foundRed = true;
+                    } else {
+                        $(this).addClass("yellow");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+    
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer Richard</title>
+    <style>
+        ol.menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            background-color: white;
+        }
+        ol.menu > li {
+            background: hotpink;
+            margin: 0 5px;
+            position: relative;
+            padding: 5px 10px;
+            cursor: pointer;
+            width: 150px;
+            color: white;
+            text-decoration: underline;
+        }
+        ol.menu li ol {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 5px solid hotpink;
+            padding: 5px;
+            list-style: none;
+            margin: 0;
+        }
+        ol.menu li ol li {
+          margin: 0;
+          padding: 5px 10px;
+          white-space: nowrap;
+          width: 131px;
+        }
+        ol.menu li ol li:hover {
+          background: #ffe6f0;
+        }
+        a {
+          text-decoration: none;
+          color: black;
+        }
+    </style>
+    
+</head>
+<body>
+    <ol class="menu">
+        <li class="item">jQuery
+            <ol>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Blog</a></li>
+            </ol>
+        </li>
+        <li class="item">Community
+            <ol>
+                <li><a href="#">Mailing List</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Demos</a></li>
+                <li><a href="#">Plugins</a></li>
+            </ol>
+        </li>
+        <li class="item">Development
+            <ol>
+                <li><a href="#">Source Code</a></li>
+                <li><a href="#">Bug Tracking</a></li>
+                <li><a href="#">Recent Changes</a></li>
+            </ol>
+        </li>
+    </ol>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("li.item ol").hide();
+        $("li.item").hover(function() {
+            $("li.item ol").hide(); 
+        $(this).children("ol").show()
+        }, function() {
+            });
+        });
+    </script>
+</body>
+</html>

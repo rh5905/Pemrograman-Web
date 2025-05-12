@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer Richard</title>
+    <style>
+        #namaContainer div {
+            margin: 5px;
+        }
+        .highlight {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="namaInput" placeholder="Masukkan nama">
+    <button id="addBtn">Add</button>
+    <button id="searchBtn">Search</button>
+    <div id="namaContainer">
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#addBtn").click(function(){
+                let nama = $("#namaInput").val();
+                if(nama) {
+                    $("<div>" + nama + "</div>").appendTo("#namaContainer");
+                    $("#namaInput").val("");
+                }
+            });
+            $("#searchBtn").click(function(){
+                let keyword = $("#namaInput").val().toLowerCase();
+                $("#namaContainer div").removeClass("highlight").filter(function(){
+                    return $(this).text().toLowerCase().includes(keyword);
+                }).addClass("highlight");
+            });
+        });
+    </script>
+</body>
+</html>
+
+
