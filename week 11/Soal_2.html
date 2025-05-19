@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style>
+        table{
+            width: 400px;
+        }
+        td{
+            border: 1px solid black;
+            padding: 8px;
+        }
+        #resultArea{
+            display: none;
+            border: 1px solid black;
+            padding: 15px;
+            width: 600px;
+            margin-top: 15px;
+        }
+        h2{
+            text-align: center;
+            color: blue;
+        }
+        a{
+            text-decoration: underline;
+            color: blue;
+        }
+        #hideBtn{
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table id="previewTable" border="1">
+        <tr><td>Title</td></tr>
+        <tr><td>Content</td></tr>
+        <tr><td>Generator</td></tr>
+    </table>
+    <br>
+    <button id="lookBtn">Look</button>
+    <div id="resultArea"></div>
+    <button id="hideBtn">Hide</button>
+    <script>
+        $(document).ready(function(){
+            $("#lookBtn").click(function(){
+                $.getJSON("Soal_2.Json", function(data){
+                    let resultHtml = `<h2><a href="${data.link}" target="_blank">${data.title}</a></h2><hr/>`;
+                    $.each(data.items, function (i, item) {
+                        resultHtml += `
+                            <p><a href="${item.link}" target="_blank"><strong>${item.title}</strong></a><br>
+                            By : ${item.author} / <em>${item.published}</em></p>
+                            <p>${item.description}</p>
+                            <p>Universitas : <a href="${item.universitas.m}" target="_blank">Click Here</a></p>
+                            <p>Tag(s) : ${item.tags}</p><hr/>
+                        `;
+                    });
+                    resultHtml += `<p>&copy;${data.generator}</p>`;
+                    $("#previewTable").hide();
+                    $("#lookBtn").hide();
+                    $("#resultArea").html(resultHtml).slideDown();
+                    $("#hideBtn").show();
+                });
+            });
+            $("#hideBtn").click(function () {
+                $("#resultArea").slideUp();
+                $("#previewTable").slideDown();
+                $("#lookBtn").show();
+                $("#hideBtn").hide();
+            });
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373001 - Ebenhazer</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            background-color: #FFFFCC;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #CCFFAA;
+        }
+        thead{
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <h3>
+        Selamat! Berikut adalah Daftar Mahasiswa yang mendapat <br>
+        Nilai A Pemrograman Web SI Tahun Ajaran 2023/2024
+    </h3>
+    <form>
+    <fieldset style="width: 300px;">
+        <label><input type="radio" name="kelas" value="All"> All</label><br>
+        <label><input type="radio" name="kelas" value="A"> Kelas A</label><br>
+        <label><input type="radio" name="kelas" value="B"> Kelas B</label><br><br>
+        <button type="button" id="search">Search</button>
+    </fieldset>
+</form>
+
+    <br>
+    <table id="mahasiswaTable">
+        <thead>
+            <tr>
+                <th>NRP</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Nilai Akhir</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        $("#search").click(function () {
+            let kelas = $(":radio[name='kelas']:checked").val();
+            let url = "";
+
+            if (kelas === "A") url = "nilaiA.json";
+            else if (kelas === "B") url = "nilaiB.json";
+            else url = "nilai.json";
+
+            $.getJSON(url, function (data) {
+                console.log(data);
+                let rows = "";
+                for (let i=0;i<data.nilai.length;i++) {
+                    console.log(data.nilai[i].nama);
+                }
+                $.each(data.nilai, function () {
+                    rows += "<tr><td>" + this.nrp + "</td><td>" + this.nama + "</td><td>" + this.kelas + "</td><td>" + this.nilaiakhir + "</td></tr>";
+                });
+                $("#mahasiswaTable tbody").html(rows);
+            });
+        });
+    </script>
+</body>
+</html>
+
